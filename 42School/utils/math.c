@@ -32,10 +32,30 @@ int check_power_of(int number, int divisor)
     return (divide_count);
 }
 
-// int main(void)
-// {
-//     int a = 2;
-//     int b = 27;
+int squrt(int i)
+{
+    int count = 0;
+    int sum = 0;
+    int odd = 1;
 
-//     printf("%d to the power of %d is %d\n", a, b, check_power_of(b, a));
-// }
+    while(i > sum)
+    {
+        sum += odd;
+        odd += 2;
+        count++;
+    }
+    return (count);
+}
+
+
+
+int main(void)
+{
+    int a = 2;
+    int b = 27;
+    int c = 81;
+
+    printf("the squrt of %d is: %d\n", c, squrt(c));
+
+    //printf("%d to the power of %d is %d\n", a, b, check_power_of(b, a));
+}

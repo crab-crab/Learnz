@@ -67,10 +67,10 @@ int atoi(char *str)
 }
 
 
-int main(void)
-{
-    char *nbr2 = "-48364875";
-    int nbr = -48364875;
-    ft_putnbr(atoi(nbr2));
-    write(1,"\n",1);
-}
+// int main(void)
+// {
+//     char *nbr2 = "-48364875";
+//     int nbr = -48364875;
+//     ft_putnbr(atoi(nbr2));
+//     write(1,"\n",1);
+// }
