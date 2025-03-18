@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdlib.h>
+#include "argv.c"
 
 
 int main(int argc, char **argv)
@@ -12,8 +13,10 @@ int main(int argc, char **argv)
 
     // preparse input string to find number of characters
     int arg_size = count_inputs(argv[1]);
+
     // from math, squrt to get length of one side
-    int size = squrt(arg_size); 
+    int size = squrt(arg_size);
+
     // return one dimensional int array containing constraints
     int *constraints = parse_input(argv[1], arg_size);
 

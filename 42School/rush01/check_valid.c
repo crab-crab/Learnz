@@ -1,21 +1,24 @@
 
-
-int check_sudoku(int **grid, int x, int y, int size)
+//given a position in the square, does that number repeat itself in its colum/row?
+int check_sudoku(int **grid, int x, int y, int size) //!checked!
 {
     int checknum = grid[y][x];
 
     int i = 0;
     while(i < size)
     {
-        if(checknum == grid[i][x])
-            return (0);
+		if(checknum == grid[i][x])
+			if(i != y)
+				return (0);
+			
         i++;
     }
     i = 0;
     while(i < size)
     {
-        if(checknum == grid[y][i])
-            return (0);
+		if(checknum == grid[y][i])
+			if(i != x)
+				return (0);
         i++;
     }
     return(1);

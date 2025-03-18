@@ -1,8 +1,10 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
+#include "check_valid.c"
 
-void ft_putnbr(int nbr)
+void ft_putnbr(int nbr)//!checked!
 {
     if(nbr == -2147483648)
     {
@@ -24,7 +26,7 @@ void ft_putnbr(int nbr)
     ft_putnbr(nbr % 10);
 }
 
-int **grid_innit(int n)
+int **grid_innit(int n)//!checked!
 {
     int i = 0;
     int **grid = (int **)malloc(n * sizeof(int *));
@@ -39,7 +41,7 @@ int **grid_innit(int n)
         grid[i] = (int *)malloc(n * sizeof(int));
         if(grid[i] == NULL)
         {
-            write(1, "grid innit error", 16);
+            write(1, "grid row innit error", 20);
             return (NULL);
         }
         i++;
@@ -47,7 +49,7 @@ int **grid_innit(int n)
     return (grid);
 }
 
-void grid_fill(int **grid, int n, int fill)
+void grid_fill(int **grid, int n, int fill)//!checked!
 {
     int i = 0;
     int j = 0;
@@ -64,7 +66,7 @@ void grid_fill(int **grid, int n, int fill)
     }
 }
 
-void print_grid(int **grid, int n)
+void print_grid(int **grid, int n)//!checked!
 {
     int i = 0;
     int j = 0;
@@ -83,28 +85,32 @@ void print_grid(int **grid, int n)
     }
 }
 
-void edit_grid(int **grid, int x, int y, int value)
+void edit_grid(int **grid, int x, int y, int value)//!checked!
 {
     grid[y][x] = value;
 }
 
-void free_grid(int **grid, int n)
+void free_grid(int **grid, int n)//!checked!
 {
-    int i = 0;
-    int j = 0;
+    int i;
+	i = 0;
 
-    while(i < n)
+    while (i < n)
     {
-        j = 0;
-        while(j < n)
-        {
-            ft_putnbr(grid[i][j]);
-            write(1," ",1);
-            j++;
-        }
-        write(1,"\n",1);
-        i++;
+        if (grid[i] != NULL)
+		{
+			free(grid[i]);
+			grid[i] = NULL;
+			//write(1, "row free\n", 9);
+		}
+		i++;
     }
+	if (grid != NULL)
+		{
+			free(grid);
+			grid = NULL;
+			//write(1, "grid free\n", 10);
+		}
 }
 
 int main(void)
@@ -113,12 +119,23 @@ int main(void)
     int **grid = grid_innit(size);
     grid_fill(grid, size, 0);
     print_grid(grid, size);
+	write(1, "______________\n\n", 16);
 
-    edit_grid(grid, 0, 0, 1);
-    edit_grid(grid, 1, 1, 1);
-    edit_grid(grid, 2, 2, 1);
-    edit_grid(grid, 3, 3, 1);
-    edit_grid(grid, 4, 4, 1);
+    edit_grid(grid, 0, 0, 5);
+    edit_grid(grid, 0, 1, 2);
+    edit_grid(grid, 0, 2, 3);
+    edit_grid(grid, 0, 3, 1);
+    edit_grid(grid, 0, 4, 1);
+    edit_grid(grid, 1, 0, 2);
+    edit_grid(grid, 2, 0, 3);
+    edit_grid(grid, 3, 0, 4);
+    edit_grid(grid, 4, 0, 1);
 
     print_grid(grid, size);
+
+	printf("checksudoku: %d\n", check_sudoku(grid, 0, 0, size));
+
+	free_grid(grid, size);
+
+
 }

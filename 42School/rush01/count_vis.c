@@ -21,7 +21,6 @@ int vis_down(int **grid, int col, int size)
 
 int vis_up(int **grid, int col, int size)
 {
-    int i = 0;
     int count = 0;
     int max = 0;
 
@@ -57,7 +56,6 @@ int vis_right(int **grid, int row, int size)
 
 int vis_left(int **grid, int row, int size)
 {
-    int i = 0;
     int count = 0;
     int max = 0;
 
