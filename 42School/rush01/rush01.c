@@ -1,7 +1,4 @@
-#include <unistd.h>
-#include <stdlib.h>
-#include "argv.c"
-
+#include "rush.h"
 
 int main(int argc, char **argv)
 {
@@ -19,6 +16,8 @@ int main(int argc, char **argv)
 
     // return one dimensional int array containing constraints
     int *constraints = parse_input(argv[1], arg_size);
+
+	printf("your first number was: %d", constraints[0]);
 
 
 }
