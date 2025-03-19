@@ -39,9 +39,9 @@ int min_offset(int vis_value, int num, int size)
 
 
 
-int check_valid(int **grid, int **constraints, int x, int y, int size)
+int check_valid(int **grid, int *constraints, int x, int y, int size)
 {
-    if(check_sudoku(grid, x, y , size))
+    if(check_sudoku(grid, x, y , size) == 1)
     {
         return (1);
     }
