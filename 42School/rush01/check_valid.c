@@ -1,3 +1,4 @@
+#include "rush.h"
 
 //These functions check if a number at a given position breaks any rules/constraints
 
@@ -39,9 +40,25 @@ int min_distance(int vis_value, int num, int size)
         return(0);
 }
 
+int max_possible(int **grid, int *constraints, int x, int y, int size)
+{
+	if(vis_down(grid, x, size) < constraints[x])
+	{
+		printf("check down failed: %d < %d\n", vis_down(grid, x, size), constraints[x]);
+		//printf("check right failed: %d < %d\n", vis_right(grid, y, size), constraints[x + 2*size]);
+		return (0);
+	}
+	if(vis_right(grid, y, size) < constraints[x + 2*size])
+	{
+		printf("num %d x%d,y%d visright check %d <? constraint %d\n", grid[y][x], x, y, vis_right(grid, y, size), constraints[x + 2*size]);
+		return(0);
+	}
+	return(1);
+}
+
 // check offset of a given number against expected offset
 // do so in all directions - up/down/left/right
-int check_min_distance(int **grid, int *constraints, int x, int y,int size)
+int check_min_distance(int **grid, int *constraints, int x, int y, int size)
 {
 	int num = grid[y][x];
 	if(min_distance(constraints[x], num, size) > y)
@@ -58,7 +75,9 @@ int check_min_distance(int **grid, int *constraints, int x, int y,int size)
 // check if value at position x,y conforms to Sudoku & Max Distance
 int check_valid(int **grid, int *constraints, int x, int y, int size)
 {
-    if(check_sudoku(grid, x, y , size) && check_min_distance(grid, constraints, x, y, size))
+    if (check_sudoku(grid, x, y , size) 
+		&& check_min_distance(grid, constraints, x, y, size) 
+		&& max_possible(grid, constraints, x, y, size))
     {
         return (1);
     }

@@ -13,11 +13,14 @@ int main(int argc, char **argv)
 	int size;
 
 	// Test Generation //
+	// argv[1] == "t" | argv[2] = size of square | argv[3] = <initial values>
 	// if in test mode, program will generate a sudoku legal grid
 	// then calculate vis values and return a corresponding *constraints
 	if(argv[1][0] == 't')
 	{
+		printf("generating test values\n");
 		int test_size = argv[2][0] - '0';
+		printf("test square size: %d\n", test_size);
 		size = test_size;
 		grid = grid_innit(size);
 		grid_fill(grid, size, 0);
@@ -26,6 +29,9 @@ int main(int argc, char **argv)
 		constraints = get_grid_vis(grid, size);
 		printf("grid with initial %d values finished:\n", added);
 		print_grid(grid, size);
+		printf("generated constraints:\n");
+		pt_parsed_input(constraints, size);
+		grid_fill(grid, size, 0);
 	}
 
 	// start timer
@@ -46,7 +52,6 @@ int main(int argc, char **argv)
 		grid = grid_innit(size);
 		grid_fill(grid, size, 0);
 	}
-
 
 	// call solve function on grid & constraints, print grid if solution
 	if(solve(grid, constraints, 0, 0, size) == 1)

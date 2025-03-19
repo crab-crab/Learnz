@@ -2,21 +2,24 @@
 int add_values(int **grid, char *values, int size)
 {
 	int in_size = count_inputs(values);
+	int result = in_size;
+	printf("counted %d values\n", in_size);
 	int *in_parsed = parse_input(values, in_size);
 	int x = 0;
 	int y = 0;
-	while(size > 0)
+	while(in_size > 0)
 	{
 		if(x == size)
 		{
 			x = 0;
 			y++;
 		}
-		grid[y][x] = *values;
-		values++;
+		grid[y][x] = *in_parsed;
+		in_parsed++;
 		x++;
+		in_size--;
 	}
-	return(in_size);
+	return(result);
 }
 
 

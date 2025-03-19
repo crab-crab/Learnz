@@ -58,11 +58,12 @@ int *parse_input(char *input, int size)
     return (out_array);
 }
 
+// print values in a 1D array of ints
 void pt_parsed_input(int *input, int size)
 {
 	int i = 0;
 
-	while(i < size)
+	while(i < size * 4)
 	{
 		ft_putnbr(input[i]);
 		write(1, " ", 1);

@@ -10,7 +10,12 @@ int vis_down(int **grid, int col, int size)
 
     while(i < size)
     {
-        if(grid[i][col] > max)
+        if(grid[i][col] == 0)
+		{
+			count += (size - max);
+			return(count);
+		}	
+		if(grid[i][col] > max)
         {
             max = grid[i][col];
             count++;
@@ -48,7 +53,12 @@ int vis_right(int **grid, int row, int size)
 
     while(i < size)
     {
-        if(grid[row][i] > max)
+        if(grid[row][i] == 0)
+		{
+			count += (size - max);
+			return(count);
+		}
+		if(grid[row][i] > max)
         {
             max = grid[row][i];
             count++;
