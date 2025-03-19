@@ -32,6 +32,7 @@ void free_grid(int **, int);
 // check_valid.c
 int check_sudoku(int **, int, int, int);
 int min_offset(int, int, int);
+int check_offset(int **, int *, int, int, int);
 int check_valid(int **, int *, int, int, int);
 
 // math.c

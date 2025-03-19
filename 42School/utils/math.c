@@ -49,13 +49,13 @@ int squrt(int i)
 
 
 
-int main(void)
-{
-    int a = 2;
-    int b = 27;
-    int c = 81;
+// int main(void)
+// {
+//     int a = 2;
+//     int b = 27;
+//     int c = 81;
 
-    printf("the squrt of %d is: %d\n", c, squrt(c));
+//     printf("the squrt of %d is: %d\n", c, squrt(c));
 
-    //printf("%d to the power of %d is %d\n", a, b, check_power_of(b, a));
-}
+//     //printf("%d to the power of %d is %d\n", a, b, check_power_of(b, a));
+// }

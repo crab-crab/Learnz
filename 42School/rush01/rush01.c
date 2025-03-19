@@ -16,7 +16,7 @@ int main(int argc, char **argv)
     int arg_size = count_inputs(argv[1]);
 
     // from math, squrt to get length of one side
-    int size = squrt(arg_size);
+    int size = (arg_size/4);
 
     // return one dimensional int array containing constraints
     int *constraints = parse_input(argv[1], arg_size);
@@ -36,6 +36,7 @@ int main(int argc, char **argv)
 	else
 		printf("no solution found :(\n");
 
+	// free all pointers in grid and set to NULL
 	free(grid);
 
 	// stop timer and calculate difference
@@ -44,6 +45,6 @@ int main(int argc, char **argv)
 						- (start.tv_sec * 1000000 + start.tv_usec);
 
 
-	printf("Time taken is : %ld milli seconds\n", time_taken/1000);
+	printf("Time taken: %ld micro seconds\n", time_taken);
 	return(0);
 }
