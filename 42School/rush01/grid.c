@@ -4,7 +4,10 @@
 #include <stdio.h>
 #include "rush.h"
 
-void ft_putnbr(int nbr)//!checked!
+// These functions handle initialisation/malloc for grid
+// as well as: editting values, printing, freeing
+
+void ft_putnbr(int nbr)
 {
     if(nbr == -2147483648)
     {
@@ -27,7 +30,7 @@ void ft_putnbr(int nbr)//!checked!
 }
 
 // initialise grid of size n, return pointer to 2d int array of grid
-int **grid_innit(int n)//!checked!
+int **grid_innit(int n)
 {
     int i = 0;
     int **grid = (int **)malloc(n * sizeof(int *));
@@ -51,7 +54,7 @@ int **grid_innit(int n)//!checked!
 }
 
 // fill grid with filler int "fill"
-void grid_fill(int **grid, int n, int fill)//!checked!
+void grid_fill(int **grid, int n, int fill)
 {
     int i = 0;
     int j = 0;
@@ -69,7 +72,7 @@ void grid_fill(int **grid, int n, int fill)//!checked!
 }
 
 // print out grid on stdout
-void print_grid(int **grid, int n)//!checked!
+void print_grid(int **grid, int n)
 {
     int i = 0;
     int j = 0;
@@ -89,14 +92,14 @@ void print_grid(int **grid, int n)//!checked!
 }
 
 // change value at position x,y in grid
-void edit_grid(int **grid, int x, int y, int value)//!checked!
+void edit_grid(int **grid, int x, int y, int value)
 {
     grid[y][x] = value;
 }
 
 // free the malloc'd memory of all members of grid, of grid
 // check for NULL before freeing, set to NULL after
-void free_grid(int **grid, int n)//!checked!
+void free_grid(int **grid, int n)
 {
     int i;
 	i = 0;
@@ -107,7 +110,6 @@ void free_grid(int **grid, int n)//!checked!
 		{
 			free(grid[i]);
 			grid[i] = NULL;
-			//write(1, "row free\n", 9);
 		}
 		i++;
     }
@@ -115,6 +117,5 @@ void free_grid(int **grid, int n)//!checked!
 		{
 			free(grid);
 			grid = NULL;
-			//write(1, "grid free\n", 10);
 		}
 }

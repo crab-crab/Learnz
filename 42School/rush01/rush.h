@@ -35,9 +35,6 @@ int min_offset(int, int, int);
 int check_offset(int **, int *, int, int, int);
 int check_valid(int **, int *, int, int, int);
 
-// math.c
-int squrt(int);
-
 // solve.c
 int solve(int **, int *, int, int, int);
 

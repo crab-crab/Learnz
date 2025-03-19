@@ -27,14 +27,14 @@ int main(int argc, char **argv)
 	grid_fill(grid, size, 0);
 
 
-	// call solve function on grid & constraints, print grid
+	// call solve function on grid & constraints, print grid if solution
 	if(solve(grid, constraints, 0, 0, size) == 1)
 	{
-		printf("grid solved:\n");
+		write(1, "grid solved:\n", 13);
 		print_grid(grid, size);
 	}
 	else
-		printf("no solution found :(\n");
+		write(1, "no solution found :(\n", 20);
 
 	// free all pointers in grid and set to NULL
 	free(grid);
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 	long int time_taken = (end.tv_sec * 1000000 + end.tv_usec) 
 						- (start.tv_sec * 1000000 + start.tv_usec);
 
-
+	// print time taken
 	printf("Time taken: %ld micro seconds\n", time_taken);
 	return(0);
 }

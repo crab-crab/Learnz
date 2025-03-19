@@ -1,6 +1,8 @@
 
+//These functions check if a number at a given position breaks any rules/constraints
+
 //given a position in the square, does that number repeat itself in its colum/row?
-int check_sudoku(int **grid, int x, int y, int size) //!checked!
+int check_sudoku(int **grid, int x, int y, int size)
 {
     int checknum = grid[y][x];
 
@@ -24,9 +26,8 @@ int check_sudoku(int **grid, int x, int y, int size) //!checked!
     return(1);
 }
 
-
 // return minimum distance between num and edge, given a vis_value
-int min_offset(int vis_value, int num, int size)
+int min_distance(int vis_value, int num, int size)
 {
     int offset = size - vis_value;
     int closest = num - offset;
@@ -39,23 +40,25 @@ int min_offset(int vis_value, int num, int size)
 }
 
 // check offset of a given number against expected offset
-int check_offset(int **grid, int *constraints, int x, int y,int size)
+// do so in all directions - up/down/left/right
+int check_min_distance(int **grid, int *constraints, int x, int y,int size)
 {
 	int num = grid[y][x];
-	if(min_offset(constraints[x], num, size) > y)
+	if(min_distance(constraints[x], num, size) > y)
 		return(0);
-	if(min_offset(constraints[x + size], num, size) > size - y)
+	if(min_distance(constraints[x + size], num, size) > size - y)
 		return(0);
-	if(min_offset(constraints[y + 2*size], num, size) > x)
+	if(min_distance(constraints[y + 2*size], num, size) > x)
 		return(0);
-	if(min_offset(constraints[y + 3*size], num, size) > size - x)
+	if(min_distance(constraints[y + 3*size], num, size) > size - x)
 		return(0);
 	return(1);
 }
 
+// check if value at position x,y conforms to Sudoku & Max Distance
 int check_valid(int **grid, int *constraints, int x, int y, int size)
 {
-    if(check_sudoku(grid, x, y , size) && check_offset(grid, constraints, x, y, size))
+    if(check_sudoku(grid, x, y , size) && check_min_distance(grid, constraints, x, y, size))
     {
         return (1);
     }

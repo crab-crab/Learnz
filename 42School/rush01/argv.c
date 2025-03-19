@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
+// These functions handle the program arguments
 
 // counts how many numbers are present in the input
 // ignores spaces, expects an integer between 0-9

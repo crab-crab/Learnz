@@ -76,6 +76,7 @@ int vis_left(int **grid, int row, int size)
     return (count);
 }
 
+// check a row according to the constraints on either side
 int check_row(int **grid, int *constraints, int row, int size)
 {
 	if(vis_right(grid, row, size) != constraints[row + 2*size] 
@@ -85,6 +86,7 @@ int check_row(int **grid, int *constraints, int row, int size)
     	return (1);
 }
 
+// check a col according to the constraints on either side
 int check_col(int **grid, int *constraints, int col, int size)
 {
 	if(vis_up(grid, col, size) != constraints[col + size] 
@@ -94,6 +96,7 @@ int check_col(int **grid, int *constraints, int col, int size)
     	return (1);
 }
 
+// check an entire grid against constraints
 int check_grid_vis(int **grid, int *constraints, int size)
 {
     int i = 0;
