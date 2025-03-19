@@ -24,6 +24,7 @@ int check_sudoku(int **grid, int x, int y, int size) //!checked!
     return(1);
 }
 
+
 // return minimum distance between num and edge, given a vis_value
 int min_offset(int vis_value, int num, int size)
 {
