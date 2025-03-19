@@ -30,11 +30,6 @@ int main(int argc, char **argv)
 		print_grid(grid, size);
 	}
 	print_grid(grid, size);
-	//print_grid(grid, size);
-	// else
-	// {
-	// 	printf("no solution found, last state:\n");
-	// 	print_grid(grid, size);
-	// }
+
 	return(0);
 }

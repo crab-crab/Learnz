@@ -4,16 +4,16 @@ int solve(int **grid,int *constraints, int x, int y,int size)
 {
 	int num = size;
 	
-	// print_grid(grid, size);
-	// printf("\n");
+	print_grid(grid, size);
+	printf("\n");
 	//printf("solve - x:%d, y:%d\n", x, y);
 	if (x == size)
 	{
-		return (solve(grid, constraints, 0, y + 1, size));
-		// if(check_row(grid, constraints, x, size) == 1)
-		// 	return (solve(grid, constraints, 0, y + 1, size));
-		// else
-		// 	return (0);
+		// return (solve(grid, constraints, 0, y + 1, size));
+		if(check_row(grid, constraints, x, size) == 1)
+			return (solve(grid, constraints, 0, y + 1, size));
+		else
+			return (0);
 	}
 	if (y == size)
 	{
@@ -29,9 +29,8 @@ int solve(int **grid,int *constraints, int x, int y,int size)
 		edit_grid(grid, x, y, num);
 		if(check_valid(grid, constraints, x, y, size) == 1)
 		{
-			if (solve(grid, constraints, x+1, y, size))
+			if (solve(grid, constraints, x+1, y, size) == 1)
 				return(1);
-			edit_grid(grid, x, y, 0);
 		}
 		num--;
 	}
