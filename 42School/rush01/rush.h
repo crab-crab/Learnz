@@ -10,8 +10,10 @@
 #include <sys/time.h>
 
 // argv.c
+void ft_putnbr(int);
 int count_inputs(char *);
 int *parse_input(char *, int);
+void pt_parsed_input(int *, int);
 
 // count_vis.c
 int vis_down(int **, int, int);
@@ -37,5 +39,10 @@ int check_valid(int **, int *, int, int, int);
 
 // solve.c
 int solve(int **, int *, int, int, int);
+
+// test.c
+int add_values(int **, char *, int);
+int finish_grid(int **, int, int, int);
+int *get_grid_vis(int **, int);
 
 #endif

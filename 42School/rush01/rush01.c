@@ -2,29 +2,50 @@
 
 int main(int argc, char **argv)
 {
-    if(argc != 2)
+    if(argc != 2 && argv[1][0] != 't')
     {
-        write(1, "expected 2 program arguments", 28);
+        write(1, "expected 2 program arguments\n", 29);
         exit(EXIT_FAILURE);        
     }
+
+	int **grid;
+	int *constraints;
+	int size;
+
+	// Test Generation //
+	// if in test mode, program will generate a sudoku legal grid
+	// then calculate vis values and return a corresponding *constraints
+	if(argv[1][0] == 't')
+	{
+		int test_size = argv[2][0] - '0';
+		size = test_size;
+		grid = grid_innit(size);
+		grid_fill(grid, size, 0);
+		int added = add_values(grid, argv[3], size);
+		finish_grid(grid, (added % size), (added / size), size);
+		constraints = get_grid_vis(grid, size);
+		printf("grid with initial %d values finished:\n", added);
+		print_grid(grid, size);
+	}
 
 	// start timer
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
 
-    // preparse input string to find number of characters
-    int arg_size = count_inputs(argv[1]);
+   	if(argc == 2)
+	{ 
+		// preparse input string to find number of characters
+		int arg_size = count_inputs(argv[1]);
+		size = (arg_size/4);
 
-    // from math, squrt to get length of one side
-    int size = (arg_size/4);
+		// return one dimensional int array containing constraints
+		constraints = parse_input(argv[1], arg_size);
 
-    // return one dimensional int array containing constraints
-    int *constraints = parse_input(argv[1], arg_size);
-
-	// initialise grid - 2d array of ints
-	// fill with 0's
-	int **grid = grid_innit(size);
-	grid_fill(grid, size, 0);
+		// initialise grid - 2d array of ints
+		// fill with 0's
+		grid = grid_innit(size);
+		grid_fill(grid, size, 0);
+	}
 
 
 	// call solve function on grid & constraints, print grid if solution
