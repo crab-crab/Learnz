@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <sys/time.h>
 
 // argv.c
 int count_inputs(char *);
@@ -18,6 +19,7 @@ int vis_up(int **, int, int);
 int vis_right(int **, int, int);
 int vis_left(int **, int, int);
 int check_row(int **, int *, int, int);
+int check_col(int **, int *, int, int);
 int check_grid_vis(int **, int *, int);
 
 // grid.c

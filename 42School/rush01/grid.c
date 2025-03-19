@@ -126,15 +126,23 @@ void free_grid(int **grid, int n)//!checked!
 //     print_grid(grid, size);
 // 	write(1, "______________\n\n", 16);
 
-//     edit_grid(grid, 0, 0, 5);
+//     edit_grid(grid, 0, 0, 1);
 //     edit_grid(grid, 0, 1, 2);
 //     edit_grid(grid, 0, 2, 3);
-//     edit_grid(grid, 0, 3, 1);
-//     edit_grid(grid, 0, 4, 1);
+//     edit_grid(grid, 0, 3, 4);
 //     edit_grid(grid, 1, 0, 2);
+//     edit_grid(grid, 1, 1, 3);
+//     edit_grid(grid, 1, 2, 4);
+//     edit_grid(grid, 1, 3, 1);
 //     edit_grid(grid, 2, 0, 3);
+//     edit_grid(grid, 2, 1, 4);
+//     edit_grid(grid, 2, 2, 1);
+//     edit_grid(grid, 2, 3, 2);
 //     edit_grid(grid, 3, 0, 4);
-//     edit_grid(grid, 4, 0, 1);
+//     edit_grid(grid, 3, 1, 1);
+//     edit_grid(grid, 3, 2, 2);
+//     edit_grid(grid, 3, 3, 3);
+
 
 //     print_grid(grid, size);
 

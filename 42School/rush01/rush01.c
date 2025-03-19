@@ -8,6 +8,10 @@ int main(int argc, char **argv)
         exit(EXIT_FAILURE);        
     }
 
+	// start timer
+	struct timeval start, end;
+	gettimeofday(&start, NULL);
+
     // preparse input string to find number of characters
     int arg_size = count_inputs(argv[1]);
 
@@ -29,7 +33,17 @@ int main(int argc, char **argv)
 		printf("grid solved:\n");
 		print_grid(grid, size);
 	}
-	print_grid(grid, size);
+	else
+		printf("no solution found :(\n");
 
+	free(grid);
+
+	// stop timer and calculate difference
+	gettimeofday(&end, NULL);
+	long int time_taken = (end.tv_sec * 1000000 + end.tv_usec) 
+						- (start.tv_sec * 1000000 + start.tv_usec);
+
+
+	printf("Time taken is : %ld milli seconds\n", time_taken/1000);
 	return(0);
 }

@@ -23,17 +23,18 @@ int vis_down(int **grid, int col, int size)
 // looking upwards
 int vis_up(int **grid, int col, int size)
 {
-    int count = 0;
+    int i = size - 1;
+	int count = 0;
     int max = 0;
 
-    while(size >= 0)
+    while(i >= 0)
     {
-        if(grid[size-1][col] > max)
+        if(grid[i][col] > max)
         {
-            max = grid[size-1][col];
+            max = grid[i][col];
             count++;
         }
-        size--;
+        i--;
     }
     return (count);
 }
@@ -79,6 +80,15 @@ int check_row(int **grid, int *constraints, int row, int size)
 {
 	if(vis_right(grid, row, size) != constraints[row + 2*size] 
 	|| vis_left(grid, row, size) != constraints[row + 3*size])
+		return(0);
+	else
+    	return (1);
+}
+
+int check_col(int **grid, int *constraints, int col, int size)
+{
+	if(vis_up(grid, col, size) != constraints[col + size] 
+	|| vis_down(grid, col, size) != constraints[col])
 		return(0);
 	else
     	return (1);
