@@ -1,4 +1,6 @@
 #include "rush.h"
+
+// takes a string of initial grid values, parses and inserts into grid
 int add_values(int **grid, char *values, int size)
 {
 	int in_size = count_inputs(values);
@@ -22,7 +24,7 @@ int add_values(int **grid, char *values, int size)
 	return(result);
 }
 
-
+// finishes a half-started grid using sudoku rules
 int finish_grid(int **grid, int x, int y, int size)
 {
 	int num = size;
@@ -47,6 +49,7 @@ int finish_grid(int **grid, int x, int y, int size)
 	return(0);
 }
 
+// generate a set of constraints from a finished grid
 int *get_grid_vis(int **grid, int size)
 {
 	int i = 0;

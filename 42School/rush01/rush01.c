@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 
 	// Test Generation //
 	// argv[1] == "t" | argv[2] = size of square | argv[3] = <initial values>
-	// if in test mode, program will generate a sudoku legal grid
+	// if in test mode, program will generate a sudoku legal grid from initial values
 	// then calculate vis values and return a corresponding *constraints
 	if(argv[1][0] == 't')
 	{
@@ -60,8 +60,10 @@ int main(int argc, char **argv)
 		print_grid(grid, size);
 	}
 	else
+	{
 		write(1, "no solution found :(\n", 20);
-
+		print_grid(grid, size);
+	}
 	// free all pointers in grid and set to NULL
 	free(grid);
 

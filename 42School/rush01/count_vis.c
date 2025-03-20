@@ -2,6 +2,7 @@
 // can be compared against constraints to confirm suitability -> generate boolean
 
 // looking downwards
+// if column incomplete - assume incomplete values add to count
 int vis_down(int **grid, int col, int size)
 {
     int i = 0;
@@ -26,25 +27,36 @@ int vis_down(int **grid, int col, int size)
 }
 
 // looking upwards
+// if column incomplete & max value < size:
+// return number of incomplete spaces
 int vis_up(int **grid, int col, int size)
 {
     int i = size - 1;
 	int count = 0;
     int max = 0;
+	int zeros = 0;
 
     while(i >= 0)
     {
-        if(grid[i][col] > max)
+        if(grid[i][col] == 0)
+		{
+			zeros++;
+			count++;
+		}
+		if(grid[i][col] > max)
         {
             max = grid[i][col];
             count++;
         }
         i--;
     }
+	if(max < size)
+		count = zeros;
     return (count);
 }
 
 // looking -> right
+// if row incomplete - assume incomplete values add to count
 int vis_right(int **grid, int row, int size)
 {
     int i = 0;
@@ -69,20 +81,31 @@ int vis_right(int **grid, int row, int size)
 }
 
 // looking -> left
+// if row incomplete & max value < size:
+// return number of incomplete spaces
 int vis_left(int **grid, int row, int size)
 {
-    int count = 0;
+    int i = size - 1;
+	int count = 0;
     int max = 0;
+	int zeros = 0;
 
-    while(size >= 0)
+    while(i >= 0)
     {
-        if(grid[row][size-1] > max)
+        if(grid[row][i] == 0)
+		{
+			zeros++;
+			count++;
+		}
+		if(grid[row][i] > max)
         {
-            max = grid[row][size-1];
+            max = grid[row][i];
             count++;
         }
-        size--;
+        i--;
     }
+	if(max < size)
+		count = zeros;
     return (count);
 }
 
@@ -113,9 +136,8 @@ int check_grid_vis(int **grid, int *constraints, int size)
     while (i < size)
     {
         if(vis_down(grid, i, size) != constraints[i] 
-        || vis_up(grid, i, size) != constraints[i + size])
-            return(0);
-        if(vis_right(grid, i, size) != constraints[i + 2*size] 
+        || vis_up(grid, i, size) != constraints[i + size]
+		|| vis_right(grid, i, size) != constraints[i + 2*size] 
         || vis_left(grid, i, size) != constraints[i + 3*size])
             return(0);
         i++;

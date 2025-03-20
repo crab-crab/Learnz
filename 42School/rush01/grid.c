@@ -71,6 +71,7 @@ void print_grid(int **grid, int n)
 }
 
 // change value at position x,y in grid
+// redundant function?
 void edit_grid(int **grid, int x, int y, int value)
 {
     grid[y][x] = value;
