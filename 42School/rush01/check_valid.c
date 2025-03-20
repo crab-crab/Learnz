@@ -44,13 +44,13 @@ int max_possible(int **grid, int *constraints, int x, int y, int size)
 {
 	if(vis_down(grid, x, size) < constraints[x])
 	{
-		printf("check down failed: %d < %d\n", vis_down(grid, x, size), constraints[x]);
+		//printf("check down failed: %d < %d\n", vis_down(grid, x, size), constraints[x]);
 		//printf("check right failed: %d < %d\n", vis_right(grid, y, size), constraints[x + 2*size]);
 		return (0);
 	}
-	if(vis_right(grid, y, size) < constraints[x + 2*size])
+	if(vis_right(grid, y, size) < constraints[y + 2*size])
 	{
-		printf("num %d x%d,y%d visright check %d <? constraint %d\n", grid[y][x], x, y, vis_right(grid, y, size), constraints[x + 2*size]);
+		//printf("num %d x%d,y%d visright check %d <? constraint %d\n", grid[y][x], x, y, vis_right(grid, y, size), constraints[x + 2*size]);
 		return(0);
 	}
 	return(1);
