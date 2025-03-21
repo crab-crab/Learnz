@@ -1,5 +1,13 @@
 #include "rush.h"
 
+// iterative backtracking algorithm
+// returns true if a valid completed grid is found
+// returns false any time an incorrect configuration is found
+// iterates through all possible values for a given square until validity satisfied
+// moves to next spot if validity satisfied
+// backtracks a square any time false is returned
+// will return false if no correct configurations are possible
+
 int solve(int **grid,int *constraints, int x, int y,int size)
 {
 	int num = size;

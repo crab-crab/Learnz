@@ -65,3 +65,38 @@ int *get_grid_vis(int **grid, int size)
 	}
 	return (constraints);
 }
+
+// Test Generation //
+// argv[1] == "t" | argv[2] = size of square | argv[3] = <initial values string>
+// example: ./a.out "t" "4" "1 2 3 4 2 3 4 1 3 4 1 2 4 1 2 3"
+// if in test mode, program will generate a sudoku legal grid from initial values
+// then calculate vis values and return a corresponding *constraints
+
+int *test(char c_test_size, char *test_values, int *constraints)
+{
+
+	int size = c_test_size - '0';
+	printf("generating test of size: %d\n", size);
+
+	// initialise and fill grid with 0's
+	int **grid = grid_innit(size);
+	grid_fill(grid, size, 0);
+	int added = add_values(grid, test_values, size);
+
+	// finish grid and generate set of constraints
+	finish_grid(grid, (added % size), (added / size), size);
+	constraints = get_grid_vis(grid, size);
+
+	//print test grid
+	printf("grid with initial %d values finished:\n", added);
+	print_grid(grid, size);
+
+	// print test constraints
+	printf("generated constraints:\n");
+	pt_parsed_input(constraints, size);
+
+	// free grid used to generate test values
+	free(grid);
+
+	return (constraints);
+}

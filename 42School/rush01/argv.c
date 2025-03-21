@@ -71,3 +71,12 @@ void pt_parsed_input(int *input, int size)
 	}
 	write(1, "\n", 1);
 }
+
+void free_constraints(int *constraints, int size)
+{
+	if (constraints != NULL)
+	{
+		free(constraints);
+		constraints = NULL;
+	}
+}

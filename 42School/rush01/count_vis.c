@@ -26,6 +26,30 @@ int vis_down(int **grid, int col, int size)
     return (count);
 }
 
+// only counts known values
+// does not padd count with incomplete values
+int part_vis_down(int **grid, int col, int size)
+{
+    int i = 0;
+    int count = 0;
+    int max = 0;
+
+    while(i < size)
+    {
+        if(grid[i][col] == 0)
+		{
+			return(count);
+		}	
+		if(grid[i][col] > max)
+        {
+            max = grid[i][col];
+            count++;
+        }
+        i++;
+    }
+    return (count);
+}
+
 // looking upwards
 // if column incomplete & max value < size:
 // return number of incomplete spaces
@@ -68,6 +92,30 @@ int vis_right(int **grid, int row, int size)
         if(grid[row][i] == 0)
 		{
 			count += (size - max);
+			return(count);
+		}
+		if(grid[row][i] > max)
+        {
+            max = grid[row][i];
+            count++;
+        }
+        i++;
+    }
+    return (count);
+}
+
+// only counts known values
+// does not padd count with incomplete values
+int part_vis_right(int **grid, int row, int size)
+{
+    int i = 0;
+    int count = 0;
+    int max = 0;
+
+    while(i < size)
+    {
+        if(grid[row][i] == 0)
+		{
 			return(count);
 		}
 		if(grid[row][i] > max)
