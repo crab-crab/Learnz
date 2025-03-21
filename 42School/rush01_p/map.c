@@ -1,7 +1,29 @@
 #include "rush.h"
 
+// initialise and fill a row/col map
+// this will describe which values have been confirmed in a row/col
+int **rc_map(int n)
+{
+	int i = 0;
+	int j = 0;
+	int **rowcol_map = (int **)malloc(2 * n * sizeof(int *));
+	while (i < 2 * n)
+	{
+		rowcol_map[i] = (int *)malloc(n * sizeof(int));
+		while (j < n)
+		{
+			rowcol_map[i][j] = 0;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return(rowcol_map);
+}
+
+
 // fill each spot in the map with numbers 1 to n
-int *fill_map(int ***map, int n)
+void fill_map(int ***map, int n)
 {
     int y = 0;
 	int x = 0;
