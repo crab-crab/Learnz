@@ -8,7 +8,7 @@
 // as well as: editting values, printing, freeing
 
 
-// initialise grid of size n x n, return pointer to 2d int array of grid
+// initialise grid of size n, return pointer to 2d int array of grid
 int **grid_innit(int n)
 {
     int i = 0;
