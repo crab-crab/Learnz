@@ -18,7 +18,6 @@ int atoi(char *str)
 	}
 	while ('0' <= *str && *str <= '9')
 	{
-		printf("nbr: %d || char: %c\n", (int)*str, *str);
 		result = result * 10;
 		result += *str - '0';
 		str++;
