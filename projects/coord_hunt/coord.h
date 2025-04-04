@@ -36,9 +36,10 @@ void rm_city_table(t_city *city_table, size_t i);
 
 // csv.c
 
-
-
-
+char *rd_csv_line(char *csv, char **contents);
+int open_csv_file(const char *filename);
+void csv_to_struct(char **contents, t_city *city_table, int i);
+void load_city_csv(t_city * city_table);
 
 
 
