@@ -20,6 +20,7 @@ int ft_power(int num, int pow)
 }
 
 // determines to what power the "divisor" must be raised to result in "number"
+// is this just shitty log()?
 int check_power_of(int number, int divisor)
 {
     int divide_count = 0;

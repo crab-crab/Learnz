@@ -25,6 +25,7 @@ char *rd_csv_line(char *csv, char **contents)
 		*csv = '\0';
 		csv++;
 	}
+	return (NULL);
 }
 
 int open_csv_file(const char *filename)
@@ -47,13 +48,13 @@ int open_csv_file(const char *filename)
 
 void csv_to_struct(char **contents, t_city *city_table, int i)
 {
-	char name[MAX_CITY_NAME_SIZE];
+	//char name[MAX_CITY_NAME_SIZE];
 	float lat;
 	float lon;
 
 	lat = (float)ft_atoi(contents[1]);
 	lon = (float)ft_atoi(contents[2]);
-	set_city_table(city_table, i, "test", lat, lon);
+	set_city_table(city_table, i, contents[0], lat, lon);
 }
 
 
@@ -69,7 +70,11 @@ void load_city_csv(t_city * city_table)
 	fd = open_csv_file(CITY_TABLE_FILE);
 	bytesread = read(fd, buffer, sizeof(buffer));
 	printf("Bytesread : %zu\n\n", bytesread);
-	write(1, buffer, bytesread);
+	// if (write(1, buffer, bytesread) < 0)
+	// {
+	// 	printf("print error");
+	// 	exit(0);
+	// }
 	i = 0;
 	csv_line = buffer;
 	contents = (char**)malloc(3 * sizeof(char*));

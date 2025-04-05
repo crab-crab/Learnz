@@ -30,9 +30,10 @@ void pt_city_table(t_city *city_table, size_t size)
 	size_t i;
 
 	i = 0;
+	printf("\ncity_table:\n");
 	while (i < size)
 	{
-		printf("City %zu: %s,\t Latitude: %.4f,\t Longitude: %.4f\n", 
+				printf("City %zu: %s,\t Latitude: %.4f,\t Longitude: %.4f\n", 
 			i + 1, city_table[i].name, city_table[i].latitude, city_table[i].longitude);
 		i++;
 	}
