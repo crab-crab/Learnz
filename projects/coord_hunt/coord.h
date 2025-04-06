@@ -49,10 +49,13 @@ void load_city_csv(t_city * city_table);
 // math_helper.c
 float calcc_dist(t_city city1, t_city city2);
 float calc_distance(float lat_1, float lon_1, float lat_2, float lon_2);
-int check_power_of(int number, int divisor);
-int ft_power(int num, int pow);
+int check_power_of(long number, int divisor);
+long ft_power(int num, int pow);
 
 // random.c
+float ft_prand(void);
+int ft_prandb(void);
+float ft_prandr(float min, float max);
 
 // time.c
 long long t_since_epoch(void);

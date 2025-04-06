@@ -10,15 +10,11 @@ int main(void)
 	printf("\nload success\n");
 	pt_city_table(city_table, size);
 
-	int city1 = 2;
-	int city2 = 4;
+	int city1 = (int)ft_prandr(0, size);
+	int city2 = (int)ft_prandr(0, size);
 
 	distance = calcc_dist(city_table[city1], city_table[city2]);
 	printf("distance between %s and %s: %f\n",city_table[city1].name, city_table[city2].name, distance);
+	printf("earch circumference: %d\n", (int)(EARTH_RADIUS * 2 * PI));
 
-	long long time_since_epoch = t_since_epoch();
-	printf("Time since epoch (microseconds): %lld\n", time_since_epoch);
-
-	long us = cur_usec();
-	printf("current microseconds: %ld\n", us);
 }

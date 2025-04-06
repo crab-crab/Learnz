@@ -1,5 +1,6 @@
 #include "coord.h"
 
+// microseconds since epoch start
 long long t_since_epoch(void)
 {
 	struct timeval time;
@@ -11,6 +12,7 @@ long long t_since_epoch(void)
 	return (time_since_epoch);
 }
 
+// microseconds since start of last second
 long cur_usec(void)
 {
 	struct timeval time;

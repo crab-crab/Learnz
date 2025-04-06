@@ -49,7 +49,7 @@ float calcc_dist(t_city city1, t_city city2)
 }
 
 // innefective log approximation
-int check_power_of(int number, int divisor)
+int check_power_of(long number, int divisor)
 {
     int divide_count = 0;
 
@@ -62,7 +62,7 @@ int check_power_of(int number, int divisor)
 }
 
 // takes a number "num" and multiplies it by itself "pow" times
-int ft_power(int num, int pow)
+long ft_power(int num, int pow)
 {
     int multiplier = num;
     if(pow < 0)
