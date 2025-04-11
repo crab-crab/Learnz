@@ -21,7 +21,3 @@ long cur_usec(void)
 	return ((long)time.tv_usec);
 }
 
-// int main(void)
-// {
-// 	printf("us: %ld\n", cur_usec());
-// }

@@ -70,21 +70,3 @@ float ft_prandr(float min, float max)
 	return(average + ft_prand()*range);
 
 }
-
-
-
-// int main(void)
-// {
-// 	long seed = 123456;
-// 	int c = 10;
-
-// 	while (c > 0)
-// 	{
-// 		float rand = ft_prandr(0, 10);
-// 		//printf("r: %.6f\n", rand);
-// 		printf("r: %d\n", (int)rand);
-// 		c--;
-// 		sleep(0);
-// 	}
-
-// }

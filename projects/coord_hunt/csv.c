@@ -1,5 +1,8 @@
 #include "coord.h"
 
+// args			(csv -> csv file being read in | contents -> array csv parsing results is being stored in)
+// transform	(read csv values into contents)
+// return		(pointer to start of next CSV file line)
 char *rd_csv_line(char *csv, char **contents)
 {
 	int		i;
@@ -40,15 +43,13 @@ int open_csv_file(const char *filename)
 	}
 	else
 	{
-		printf("File open success\n");
-		printf("fd : %d\n", fd);
 		return fd;
 	}
 }
 
+// create a struct instance for each one of the items in CONTENTS, fill values as required
 void csv_to_struct(char **contents, t_city *city_table, int i)
 {
-	//char name[MAX_CITY_NAME_SIZE];
 	float lat;
 	float lon;
 
@@ -57,32 +58,25 @@ void csv_to_struct(char **contents, t_city *city_table, int i)
 	set_city_table(city_table, i, contents[0], lat, lon);
 }
 
-
-void load_city_csv(t_city * city_table)
+// 
+void load_city_csv(t_city *city_table)
 {
 	int fd;
 	char buffer[MAX_BUFFER_SIZE];
 	char **contents;
-	size_t bytesread;
 	char *csv_line;
 	int i;
 
 	fd = open_csv_file(CITY_TABLE_FILE);
-	bytesread = read(fd, buffer, sizeof(buffer));
-	printf("Bytesread : %zu\n\n", bytesread);
-	// if (write(1, buffer, bytesread) < 0)
-	// {
-	// 	printf("print error");
-	// 	exit(0);
-	// }
+
+	//(void)'ing return value of read as it is unused -> to get around -Werror -> is this safe?
+	(void)read(fd, buffer, sizeof(buffer));
 	i = 0;
 	csv_line = buffer;
 	contents = (char**)malloc(3 * sizeof(char*));
 	while (csv_line != NULL)
 	{
 		csv_line = rd_csv_line(csv_line, contents);
-		// printf("parse success\n");
-		// printf("contents array:\n%s\n%s\n%s\n", contents[0], contents[1], contents[2]);
 		csv_to_struct(contents, city_table, i);
 		i++;
 	}

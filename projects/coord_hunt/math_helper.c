@@ -1,5 +1,6 @@
 #include "coord.h"
 
+// haversine function
 double ft_haver(double theta)
 {
 	double result;
@@ -9,6 +10,7 @@ double ft_haver(double theta)
 	return (result);
 }
 
+// haversine formula
 double haver_formula(double lat_1, double lon_1, double lat_2, double lon_2)
 {
 	double distance;
@@ -24,6 +26,7 @@ double haver_formula(double lat_1, double lon_1, double lat_2, double lon_2)
 	return (distance);
 }
 
+// degrees to radian converter
 double dtor(float degrees)
 {
 	double radians;
@@ -32,6 +35,7 @@ double dtor(float degrees)
 	return ((double)radians);
 }
 
+// calculate distance between two sets of coordinates (in degrees)
 float calc_distance(float lat_1, float lon_1, float lat_2, float lon_2)
 {
 	double distance;
@@ -40,6 +44,7 @@ float calc_distance(float lat_1, float lon_1, float lat_2, float lon_2)
 	return ((float)distance);
 }
 
+// calculate distance between 2 cities
 float calcc_dist(t_city city1, t_city city2)
 {
 	float distance;
@@ -76,15 +81,3 @@ long ft_power(int num, int pow)
     }
     return(num);
 }
-
-
-// int main(void)
-// {
-// 	float lat1 = 52.1;
-// 	float lon1 = 2.6;
-// 	float lat2 = 23.4;
-// 	float lon2 = 43.1;
-
-// 	float distance = calc_distance(lat1, lon1, lat2, lon2);
-// 	printf("distance: %f\n", distance);
-// }

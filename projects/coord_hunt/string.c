@@ -1,5 +1,6 @@
 #include "coord.h"
 
+// counts the number of times char c comes up in string s
 int ft_cntchr(char *s, char c)
 {
 	int	count;
@@ -66,11 +67,3 @@ size_t ft_strlcpy(char *dst, const char *restrict src, size_t dsize)
 		*dst = '\0';
 	return (src_len);
 }
-
-// int main(void)
-// {
-// 	char	*mystr = "lakds\nlkadsjf\nalsdkfj\nlakdsjf\n\0";
-// 	char	c = '\n';
-
-// 	printf("%d found\n", ft_cntchr(mystr, c));
-// }
