@@ -10,6 +10,7 @@ extern const int	MAX_CITY_NAME_SIZE;
 extern const char* 	CITY_TABLE_FILE;
 extern const int	MAX_CSV_COLUMNS;
 extern const int	MAX_ANSWER_SIZE;
+extern const char* DIRECTIONS[8];
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,10 +27,12 @@ typedef struct s_city
 	float	longitude;
 } t_city;
 
-// struct timeval {
-//     time_t      tv_sec;  // seconds
-//     suseconds_t tv_usec; // microseconds
-// };
+typedef struct s_geo_vector
+{
+	char	cardinal[30];
+	float		distance;
+	float		bearing;
+} t_geo_vector;
 
 // string.c
 int ft_cntchr(char *s, char c);
@@ -51,10 +54,19 @@ void csv_to_struct(char **contents, t_city *city_table, int i);
 void load_city_csv(t_city * city_table);
 
 // math_helper.c
+double dtor(float degrees);
 float calcc_dist(t_city city1, t_city city2);
 float calc_distance(float lat_1, float lon_1, float lat_2, float lon_2);
 int check_power_of(long number, int divisor);
 long ft_power(int num, int pow);
+
+// geo.c
+double ft_haver(double theta);
+double haver_formula(double lat_1, double lon_1, double lat_2, double lon_2);
+float calc_bearing(double lat1, double lon1, double lat2, double lon2);
+float calcc_bearing(t_city city1, t_city city2);
+const char *get_direction_from_bearing(float bearing, const char **directions);
+void set_heading(t_city city1, t_city city2, t_geo_vector *heading);
 
 // random.c
 float ft_prand(void);

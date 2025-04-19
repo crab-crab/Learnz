@@ -13,12 +13,10 @@ Coord-Hunt
 
 # Current State:
 
-    Program returns the distance between two random cities from the "table_city_test.csv"
     Method to calculate distance: Haversine Formula
 
 # Limitations/Blindspots:
 
-    Missing ASCII-to-float so all data input (user or file) done with Integers atm
     Input file size is hard-coded, use countchar on input file to get newline count -> use as size
 
 # Next Steps:

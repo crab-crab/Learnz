@@ -7,4 +7,6 @@ const int		MAX_CITY_NAME_SIZE = 50;
 const char* 	CITY_TABLE_FILE = "table_city.csv";
 const int		MAX_CSV_COLUMNS = 20;
 const int		MAX_ANSWER_SIZE = 20;
+const char*		DIRECTIONS[8] = {"North", "North-East", "East", "South-East",
+		"South", "South-West", "West", "North-West"};
 

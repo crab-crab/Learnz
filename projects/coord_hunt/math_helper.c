@@ -1,31 +1,5 @@
 #include "coord.h"
 
-// haversine function
-double ft_haver(double theta)
-{
-	double result;
-
-	result = sin(theta * 0.5);
-	result *= result;
-	return (result);
-}
-
-// haversine formula
-double haver_formula(double lat_1, double lon_1, double lat_2, double lon_2)
-{
-	double distance;
-	double hav_theta;
-	double delta_lat;
-	double delta_lon;
-
-	delta_lat = (double)(lat_2 - lat_1);
-	delta_lon = (double)(lon_2 - lon_1);
-
-	hav_theta = ft_haver(delta_lat) + (cos(lat_1) * cos(lat_2) * ft_haver(delta_lon));
-	distance = EARTH_RADIUS * 2 * atan2(sqrt(hav_theta), sqrt(1 - hav_theta));
-	return (distance);
-}
-
 // degrees to radian converter
 double dtor(float degrees)
 {
