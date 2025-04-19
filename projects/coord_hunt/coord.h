@@ -9,6 +9,7 @@ extern const int	MAX_BUFFER_SIZE;
 extern const int	MAX_CITY_NAME_SIZE;
 extern const char* 	CITY_TABLE_FILE;
 extern const int	MAX_CSV_COLUMNS;
+extern const int	MAX_ANSWER_SIZE;
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,6 +17,7 @@ extern const int	MAX_CSV_COLUMNS;
 #include <fcntl.h>
 #include <math.h>
 #include <sys/time.h>
+#include <stdarg.h>
 
 typedef struct s_city
 {
@@ -31,7 +33,9 @@ typedef struct s_city
 
 // string.c
 int ft_cntchr(char *s, char c);
+size_t ft_strlen(const char *s);
 int ft_atoi(char *str);
+float ft_atof(char *str);
 size_t ft_strlcpy(char *dst, const char *restrict src, size_t dsize);
 
 // city.c
@@ -60,6 +64,11 @@ float ft_prandr(float min, float max);
 // time.c
 long long t_since_epoch(void);
 long cur_usec(void);
+
+// user_input.c
+
+char *simple_scan(int n);
+
 
 
 

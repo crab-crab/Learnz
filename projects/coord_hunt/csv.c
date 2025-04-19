@@ -53,8 +53,8 @@ void csv_to_struct(char **contents, t_city *city_table, int i)
 	float lat;
 	float lon;
 
-	lat = (float)ft_atoi(contents[1]);
-	lon = (float)ft_atoi(contents[2]);
+	lat = (float)ft_atof(contents[1]);
+	lon = (float)ft_atof(contents[2]);
 	set_city_table(city_table, i, contents[0], lat, lon);
 }
 
