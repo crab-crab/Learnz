@@ -12,13 +12,9 @@ long mid_square(long seed)
 	square = seed * seed;
 	square_size = check_power_of(square, 10) + 1;
 	
-
 	middle = square % ft_power(10, (square_size - seed_size/2));
 	middle = middle / ft_power(10, (square_size - 3*seed_size/2));
 
-	//printf("seed_size: %d, square_size %d, square: %ld\n", seed_size, square_size, square);
-	//middle = (square % ft_power(10,(3*seed_size)/2)) / ft_power(10, seed_size/2);
-	
 	while (check_power_of(middle, 10) + 1 < seed_size)
 		middle = (10 * middle) + (cur_usec() % 10);
 
@@ -43,7 +39,6 @@ float ft_prand(void)
 	}
 	seed_len = check_power_of(seed, 10) + 1;
 	result = (float)seed / ft_power(10, seed_len);
-	//printf("seed: %ld  result: %d\n", seed, result);
 
 	return (result);
 }
@@ -68,5 +63,4 @@ float ft_prandr(float min, float max)
 	if(ft_prandb())
 		range *= -1;
 	return(average + ft_prand()*range);
-
 }

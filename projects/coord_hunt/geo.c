@@ -56,7 +56,7 @@ float calcc_bearing(t_city city1, t_city city2)
 	return(calc_bearing(lat1, lon1, lat2, lon2));
 }
 
-
+// return a cardinal direction string from degree bearing
 const char *get_direction_from_bearing(float bearing, const char **directions)
 {
 	// Normalize 0–360

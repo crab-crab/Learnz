@@ -58,7 +58,7 @@ void csv_to_struct(char **contents, t_city *city_table, int i)
 	set_city_table(city_table, i, contents[0], lat, lon);
 }
 
-// 
+// read csv file and load into an array of t_city structs
 void load_city_csv(t_city *city_table)
 {
 	int fd;

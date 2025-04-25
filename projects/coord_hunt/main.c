@@ -8,12 +8,10 @@ int main(void)
 	t_city player;
 	t_geo_vector heading;
 	
-
 	// load static city data
 	size = 21; // static data size currently hard coded, parse csv file for newline count?
 	city_table = innit_city_table(size);
 	load_city_csv(city_table);
-
 
 	// generate random city
 	city1 = city_table[(int)ft_prandr(0, size)];

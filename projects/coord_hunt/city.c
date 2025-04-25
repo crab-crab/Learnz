@@ -49,6 +49,7 @@ void set_city_table(t_city *city_table, size_t i, char* name, float lat, float l
 	city_table[i].longitude = lon;
 }
 
+// remove city_table entry
 void rm_city_table(t_city *city_table, size_t i) // change this to use set_city_table()
 {
 	ft_strlcpy(city_table[i].name, "0", MAX_CITY_NAME_SIZE);
